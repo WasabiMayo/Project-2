@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="PRICE"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/filter_price_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/filter_onedollar_button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/filter_twodollars_button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="$$"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/filter_threedollars_button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="$$$"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/filter_free_button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Free"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="SERVICE"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <CheckBox
+            android:id="@+id/filter_wifi_checkbox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Wifi"/>
+
+        <CheckBox
+            android:id="@+id/filter_creditcard_checkbox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Credit card"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

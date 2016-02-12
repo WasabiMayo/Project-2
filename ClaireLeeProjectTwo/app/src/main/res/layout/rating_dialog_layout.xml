@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
+
+
+    <RadioGroup
+        android:id="@+id/rating_radiogroup"
+        android:layout_below="@+id/comment_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/rating_great_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="GREAT!"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/rating_normal_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="It was OK"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/rating_dislike_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Meh"
+            android:textAlignment="center"
+            android:button="@null"
+            android:background="@drawable/custom_radio_button"
+            android:padding="10dp"/>
+
+    </RadioGroup>
+
+</LinearLayout>

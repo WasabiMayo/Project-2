@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        tools:context="com.example.wasabi.framelayout.MainActivity">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:measureAllChildren="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/darker_gray">
+
+
+            <ImageView
+                android:id="@+id/detail_cover_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/brgr"
+                android:scaleType="centerCrop"/>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/detail_title_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Brgr, Chealse"/>
+
+                <TextView
+                    android:id="@+id/detail_neighbor_textview"
+                    android:layout_below="@+id/detail_title_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="Brgr, Chealse" />
+
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/detail_wifi_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wifi : Yes"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/detail_credit_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credit card : Yes"
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@+id/detail_wifi_textview"/>
+
+            <TextView
+                android:id="@+id/detail_address_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="345 23rd street, New York, NY, 10045"
+                android:layout_below="@+id/detail_wifi_textview"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e6e6e6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/detail_rating_score_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:text="9.0"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/detail_rating_votes_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:textAlignment="center"
+                    android:textSize="10sp"
+                    android:text="100 votes"
+                    android:layout_below="@id/detail_rating_score_tv"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/detail_review_button"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_review_mini"
+                android:text="Review"
+                android:textSize="10dp"
+                android:background="@android:color/transparent"
+                style="?android:attr/borderlessButtonStyle" />
+
+            <Button
+                android:id="@+id/detail_rate_button"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_star_border_mini"
+                android:text="Rate"
+                android:textSize="10dp"
+                android:background="@android:color/transparent"
+                style="?android:attr/borderlessButtonStyle" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e6e6e6"/>
+
+        <TextView
+            android:text="Comments"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/favoriteFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_favorite_border_white_24dp"
+        app:layout_anchor="@id/frameLayout"
+        app:layout_anchorGravity="bottom|right|end"/>
+
+</android.support.design.widget.CoordinatorLayout>

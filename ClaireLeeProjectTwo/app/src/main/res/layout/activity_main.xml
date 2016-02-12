@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wasabi.claireprojecttwo.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/trending_framelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/trending_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@android:color/holo_blue_dark"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sweetgreen" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/trending_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/ic_whatshot_white_24dp" />
+
+            <TextView
+                android:id="@+id/trending_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/trending_icon"
+                android:text="What's Hot Now?"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/trending_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="-10dp"
+                android:layout_below="@+id/trending_text"
+                android:text="sweetgreen"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="35sp" />
+            <TextView
+                android:id="@+id/trending_neighbor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trending_title"
+                android:text="Lower East Side"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="6dp"/>
+            <TextView
+                android:id="@+id/trending_keyword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trending_neighbor"
+                android:text="Salad, Brunch"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="-2dp"
+                android:layout_marginLeft="6dp"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/todays_pic_framelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="130dp"
+                android:background="@android:color/holo_blue_dark"
+                android:scaleType="centerCrop"
+                android:src="@drawable/refinery" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/todays_pick_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="serif"
+                    android:text="#rooftop"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/todays_pick_tag"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="serif"
+                    android:text="Today's pick"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/favorite_framelayout"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@android:color/holo_blue_dark"
+                android:scaleType="centerCrop"
+                android:src="@drawable/elk" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:text="#favorite"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="How do you feel today?"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_textview"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/breakfast_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_breakfast"
+                android:text="BREAKFAST"
+                android:textSize="10sp"/>
+
+            <Button
+                android:id="@+id/lunch_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_lunch"
+                android:text="Lunch"
+                android:textSize="10sp"/>
+
+            <Button
+                android:id="@+id/dinner_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_dinner"
+                android:text="Dinner"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/cafe_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_cafe"
+                android:text="Cafe"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/fun_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_fun"
+                android:text="Fun"
+                android:textSize="10sp"/>
+
+            <Button
+                android:id="@+id/nightLife_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_nightlife"
+                android:text="Night Life"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/happyHour_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_happyhour"
+                android:text="Happy Hour"
+                android:textSize="10sp"/>
+
+            <Button
+                android:id="@+id/shopping_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_shopping"
+                android:text="Shopping"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/dessert_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/ic_dessert"
+                android:text="Dessert"
+                android:textSize="10sp"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/location_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Where do you wanna go?"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+    <Button
+        android:id="@+id/main_midtown_button"
+        android:layout_width="85dp"
+        android:layout_height="48dp"
+        android:background="@drawable/custom_radio_button"
+        android:text="Midtown"
+        android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_chelsea_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="Chelsea"
+            android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_flatiron_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="Flatiron"
+            android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_les_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="LES"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/main_uws_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="UWS"
+            android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_ues_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="UES"
+            android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_unionsq_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="Union sq"
+            android:textColor="@color/colorPrimaryDark"/>
+        <Button
+            android:id="@+id/main_financial_button"
+            android:layout_width="85dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_radio_button"
+            android:text="Downtown"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+
+</LinearLayout>
