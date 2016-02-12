@@ -40,6 +40,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // I put the detail layout as a header of the comment listview.
+
         Intent intent = getIntent();
         receivedId = intent.getIntExtra("ITEM_ID", -2);
         MySQLiteOpenHelper helper = MySQLiteOpenHelper.getInstance(DetailActivity.this);
@@ -53,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
             {
                 String commentString = cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_COMMENT));
                 String[] commentArray = commentString.split("~");
-                for (int i = 1; i < commentArray.length-1; i++) {
+                for (int i = 0; i < commentArray.length-1; i++) {
                     mCommentList.add(commentArray[i]);
                 }
             }
@@ -67,8 +69,10 @@ public class DetailActivity extends AppCompatActivity {
 
     public void populateInitialData(Cursor cursor){
 
+        // Initializing the 'header'
         mDetailListView = (ListView)findViewById(R.id.detail_listview);
         View header = getLayoutInflater().inflate(R.layout.detail_header,null,false);
+
         ImageView coverIV = (ImageView)header.findViewById(R.id.detail_cover_imageview);
         TextView titleTV = (TextView)header.findViewById(R.id.detail_title_textview);
         TextView neighborTV = (TextView)header.findViewById(R.id.detail_neighbor_textview);
@@ -206,6 +210,8 @@ public class DetailActivity extends AppCompatActivity {
         MySQLiteOpenHelper helper = MySQLiteOpenHelper.getInstance(DetailActivity.this);
         Cursor cursor = helper.getDetailsById(receivedId);
         cursor.moveToFirst();
+
+        // Making the newly added comment visible when the user comes back from the comment activity.
         if (cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_COMMENT)) != null) {
             {
                 String commentString = cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_COMMENT));

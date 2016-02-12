@@ -84,11 +84,16 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getNeighborListByGreatFor(String greatfor, boolean isFilterApplied, String price,int wifi, int creditcard){
+
+        // Getting the list by the column 'great for'
+
         SQLiteDatabase db = this.getReadableDatabase();
         if(!isFilterApplied) {
             Cursor cursor = db.query(TABLE_NAME, NEIGHBOR_COLUMNS, COL_GREAT_FOR + " LIKE ? ", new String[]{"%" + greatfor + "%"}, null, null, null, null);
             return cursor;
         }else{
+
+            // If the filter is applied, stuff the selection string and selectionArgs array with more criteria.
             String selection = COL_GREAT_FOR + " LIKE ?";
             ArrayList<String> tempArgs = new ArrayList<>();
             tempArgs.add("%"+greatfor+"%");
@@ -169,6 +174,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = getDetailsById(rowId);
         cursor.moveToFirst();
+
+        // Updating the average rating based on the votes and current rating.
         int votes = cursor.getInt(cursor.getColumnIndex(COL_VOTES));
         int currentRating = cursor.getInt(cursor.getColumnIndex(COL_RATING));
         int updatedRating = ((currentRating*votes)+rating)/(votes+1);
@@ -182,6 +189,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         Cursor cursor = getDetailsById(rowId);
         cursor.moveToFirst();
         String currentComment = cursor.getString(cursor.getColumnIndex(COL_COMMENT));
+
+        // If there's no comment yet, put the new comment into the database.
+        // If there's a comment in the database, put new comment into it with the separator '~'.
+        // Comments will be separated later on by split method. and stored into the listviewe.
         if(currentComment == null){
             db.execSQL("UPDATE "+TABLE_NAME+" SET "+COL_COMMENT+" = '"+comment+"' WHERE "+COL_ID+" = "+rowId);
         }else{

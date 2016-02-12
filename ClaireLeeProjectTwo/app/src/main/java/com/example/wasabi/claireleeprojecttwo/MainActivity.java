@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
         dbSetup.getReadableDatabase();
 
+
+        // Setting the quick search buttons.
+        // The reason why I'm sending a string for each button is because I wanted ResultActivity to identify
+        // by which button it is activated. All buttons are using the same key, but keywords are different.
+        // Depending on the content of the string, ResultActivity will show different results.
+
         mBreakfastButton = (Button)findViewById(R.id.breakfast_button);
         mLunchButton = (Button)findViewById(R.id.lunch_button);
         mDinnerButton = (Button)findViewById(R.id.dinner_button);
@@ -132,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        // Populating other main contents.
+
         populateTodaysPickFrame();
         populateFavoriteFrame();
         populateNeighborButtons();
@@ -153,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateTrendingFrame(){
+
+        //This is for showing random items on the MainActivity. This FrameLayout is linked to DetailActivity directly.
+
         MySQLiteOpenHelper helper = MySQLiteOpenHelper.getInstance(MainActivity.this);
 
         mWhatshot = (FrameLayout) findViewById(R.id.trending_framelayout);
@@ -167,12 +178,14 @@ public class MainActivity extends AppCompatActivity {
         mWhatshotNeighbor.setText(cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_NEIGHBOR)));
         mWhatshotKeyword.setText(cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_KEYWORD)));
 
+        // Setting up image. Got the filename from the databases and converted it into int value.
         String photoId = cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_PHOTO_ID));
         int drawableId = MainActivity.this.getResources().getIdentifier(photoId, "drawable", MainActivity.this.getPackageName());
         mWhatshotImage.setImageResource(drawableId);
 
         final int rowId = cursor.getInt(cursor.getColumnIndex(MySQLiteOpenHelper.COL_ID));
 
+        //Linking the FrameLayout to DetailActivity.
         mWhatshot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +197,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateTodaysPickFrame(){
+
+        // This is for populating the Today's pick FrameLayout.
+        // This layout is directly linked to ResultActivity.
+        // Today's pick is rooftop bars!
+
         mTodaysPick = (FrameLayout)findViewById(R.id.todays_pic_framelayout);
         mTodaysPick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,6 +214,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateFavoriteFrame(){
+
+        // This is for populating Favorite FrameLayout.
+        // When you click the layout, you are linked to the ResultActivity showing your favorite places.
+
         mFavorite = (FrameLayout)findViewById(R.id.favorite_framelayout);
         mFavorite
                 .setOnClickListener(new View.OnClickListener() {
@@ -209,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateNeighborButtons(){
+
+        // Setting up the neighbor quick search buttons
+
         mMidtown = (Button)findViewById(R.id.main_midtown_button);
         mChelsea = (Button)findViewById(R.id.main_chelsea_button);
         mFlatiron = (Button)findViewById(R.id.main_flatiron_button);
@@ -287,6 +312,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Making the random trending frame refreshed everytime when the user comes back to main.
         populateTrendingFrame();
     }
 }

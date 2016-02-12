@@ -63,6 +63,9 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     public void handleRating(){
+
+        // After the comment is added, updated the rating in the database.
+
         int selectedId = mRadioGroup.getCheckedRadioButtonId();
         switch (selectedId){
             case R.id.comment_great_button:

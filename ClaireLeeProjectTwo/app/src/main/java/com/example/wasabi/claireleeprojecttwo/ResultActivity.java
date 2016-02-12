@@ -41,16 +41,20 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        // Setting the default boolean value for filter.
         isFilterApplied = false;
 
         ListView resultListView = (ListView)findViewById(R.id.result_listview);
         MySQLiteOpenHelper helper = MySQLiteOpenHelper.getInstance(ResultActivity.this);
         Cursor cursor = helper.getNeighborList();
+
+        // Receiving extras from MainActivity.
         receivedName = getIntent().getStringExtra("GREATFOR_NAME");
         receivedTodaysPick = getIntent().getStringExtra("KEYWORD");
         receivedFavoriteKeyword = getIntent().getStringExtra("FAVORITE");
         receivedNeighbor = getIntent().getStringExtra("NEIGHBOR");
 
+        //Checking what kind of keyword is received. Depending on the keyword, it executes different methods.
         if(receivedName != null) {
             cursor = helper.getNeighborListByGreatFor(receivedName, isFilterApplied, priceFilter, wifiFilter, creditCardFilter);
         }
@@ -82,10 +86,12 @@ public class ResultActivity extends AppCompatActivity {
                 TextView votesTV = (TextView)view.findViewById(R.id.result_votes_tv);
                 favoriteIV = (ImageView)view.findViewById(R.id.result_favorite_iv);
 
+                // Setting up image.
                 String photoId = cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_PHOTO_ID));
                 int drawableId = ResultActivity.this.getResources().getIdentifier(photoId, "drawable", context.getPackageName());
                 imageView.setImageResource(drawableId);
 
+                //Setting up texts and favorite icon.
                 titleTV.setText(cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_NAME)));
                 neighborTV.setText(cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_NEIGHBOR)));
                 keywordTV.setText(cursor.getString(cursor.getColumnIndex(MySQLiteOpenHelper.COL_KEYWORD)));
@@ -103,6 +109,8 @@ public class ResultActivity extends AppCompatActivity {
                 }
             }
         };
+
+        // Linking the item to DetailActivity.
         resultListView.setAdapter(cursorAdapter);
         resultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -115,7 +123,7 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
-
+        //Setting up the filter.
         Button filterButton = (Button)findViewById(R.id.result_filter_button);
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +154,9 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void launchFilterDialog(){
+
+        //This is for filtering the result.
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(ResultActivity.this);
         LayoutInflater inflater = ResultActivity.this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.filter_dialog_layout, null);
@@ -156,6 +167,8 @@ public class ResultActivity extends AppCompatActivity {
         final RadioGroup mPriceRadioGroup = (RadioGroup) dialogView.findViewById(R.id.filter_price_radiogroup);
         wifiCheckBox = (CheckBox) dialogView.findViewById(R.id.filter_wifi_checkbox);
         creditcardCheckBox = (CheckBox) dialogView.findViewById(R.id.filter_creditcard_checkbox);
+
+        // Enabling the checkboxes to show the status of the previous filter settings after the filter dialog is re-launched.
         if(wifiFilter == 1){
             wifiCheckBox.setChecked(true);
         }
@@ -163,6 +176,7 @@ public class ResultActivity extends AppCompatActivity {
             creditcardCheckBox.setChecked(true);
         }
 
+        //Retrieving the price filter value from radio buttons.
         builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -186,13 +200,15 @@ public class ResultActivity extends AppCompatActivity {
                 }
 
 
-
+                //Getting values from checkboxes.
                 if(wifiCheckBox.isChecked()){
                     wifiFilter = 1;
                 }
                 if(creditcardCheckBox.isChecked()){
                     creditCardFilter = 1;
                 }
+
+                //Checking whether the filter is applied or not. If it is applied, set the boolean into true, and swap the cursor.
                 if(priceFilter != null || wifiFilter == 1 || creditCardFilter == 1) {
                     isFilterApplied = true;
                     swapToNewCursor();
@@ -211,6 +227,9 @@ public class ResultActivity extends AppCompatActivity {
 
 
     public void swapToNewCursor(){
+
+        //Swapping cursor to update any changes when the user comes back from the detail activity or applies the filter.
+
         Cursor newCursor;
         if (isFilterApplied){
             newCursor = MySQLiteOpenHelper.getInstance(ResultActivity.this).mainSearchFunction(query,isFilterApplied,priceFilter,wifiFilter,creditCardFilter);
